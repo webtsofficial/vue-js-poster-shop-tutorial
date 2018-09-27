@@ -48,7 +48,6 @@ new Vue({
                         item.price = 9.99
                     });
                     this.items = response.data;
-                    console.log(this.items);
                 })
                 .catch((error) => {
                     console.log(error);

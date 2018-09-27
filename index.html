@@ -21,13 +21,23 @@
             <input type="text" placeholder="Search for Posters" v-model="searchTerm">
             <input type="submit" value="Search" class="btn">
         </form>
+        <div v-if="items.length > 0">
+            Find {{ items.length }} results for search term {{ searchTerm }}.
+        </div>
     </div>
     <div class="main">
         <div class="products">
             <div v-for="(item,index) in items" class="product">
-                <h4 class="product-title">{{ item.title }}</h4>
-                <div class="item-price">Price: {{ item.price  | currency}}</div>
-                <button class="add-to-cart btn" @click="addItem(index)">Add to Cart</button>
+                <div>
+                    <div class="product-image">
+                        <img :src="item.link" :title="item.title"/>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="product-title">{{ item.title }}</h4>
+                    <div class="item-price">Price: {{ item.price  | currency}}</div>
+                    <button class="add-to-cart btn" @click="addItem(index)">Add to Cart</button>
+                </div>
             </div>
         </div>
         <div class="cart">
