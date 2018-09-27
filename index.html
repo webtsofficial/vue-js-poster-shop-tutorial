@@ -17,7 +17,8 @@
 <div id="app">
     <div class="header">
         <h1>Vue.js Poster Store</h1>
-        <form class="searchbar" @submit="onSubmit($e)">
+        <form class="searchbar" @submit.prevent="onSubmit">
+            <input type="text" placeholder="Search for Posters" v-model="searchTerm">
             <input type="submit" value="Search" class="btn">
         </form>
     </div>
@@ -52,6 +53,8 @@
 <!-- Scripts -->
 <script src="/reload/reload.js"></script><!-- only for production -->
 <script type="text/javascript" src="node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript" src="node_modules/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="node_modules/vue-axios/dist/vue-axios.min.js"></script>
 <script type="text/javascript" src="public/script.js"></script>
 
 </body>

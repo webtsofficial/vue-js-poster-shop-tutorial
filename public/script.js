@@ -2,23 +2,8 @@ new Vue({
     el: '#app', // CSS Selektor String
     data: { // holds global data
         total: 0,
-        items: [
-            {
-                id: 1,
-                title: 'Item 1',
-                price: 9.95
-            },
-            {
-                id: 2,
-                title: 'Item 2',
-                price: 4.99
-            },
-            {
-                id: 3,
-                title: 'Item 3',
-                price: 12.95
-            }
-        ],
+        searchTerm: '',
+        items: [],
         cart: []
     },
     methods: {
@@ -56,7 +41,18 @@ new Vue({
             }
         },
         onSubmit(event) {
-
+            axios
+                .get('/search/' + this.searchTerm)
+                .then((response) => {
+                    response.data.map((item) => {
+                        item.price = 9.99
+                    });
+                    this.items = response.data;
+                    console.log(this.items);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     },
     filters: {
